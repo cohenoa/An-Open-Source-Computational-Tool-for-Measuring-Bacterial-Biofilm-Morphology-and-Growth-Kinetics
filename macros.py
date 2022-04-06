@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-BASE_PATH = './UNITED_DATASET/'
+BASE_PATH = 'DATASET/'
 INPUT_FOLDER = os.path.join(BASE_PATH, 'EXPERIMENT/')
 INPUT_FOLDER_CENTERS = os.path.join(BASE_PATH, 'CENTERS/')
 PARAMS_FILE = os.path.join(BASE_PATH, 'thresh_params.csv')
