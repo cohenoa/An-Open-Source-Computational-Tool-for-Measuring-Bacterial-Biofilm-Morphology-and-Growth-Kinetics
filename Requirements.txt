@@ -1,0 +1,10 @@
+numpy
+opencv-python
+pandas
+seaborn
+scipy
+statannot
+imutils
+sklearn
+tqdm
+img2pdf
