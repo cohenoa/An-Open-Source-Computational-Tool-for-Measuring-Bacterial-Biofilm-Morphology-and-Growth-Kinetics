@@ -2,9 +2,9 @@ import os
 
 import pandas as pd
 
-BASE_PATH = 'DATASET/'
-INPUT_FOLDER = os.path.join(BASE_PATH, 'EXPERIMENT/')
-INPUT_FOLDER_CENTERS = os.path.join(BASE_PATH, 'CENTERS/')
+BASE_PATH = 'Dataset/'
+INPUT_FOLDER = os.path.join(BASE_PATH, 'Experiment/')
+INPUT_FOLDER_CENTERS = os.path.join(BASE_PATH, 'Centers/')
 PARAMS_FILE = os.path.join(BASE_PATH, 'thresh_params.csv')
 DF_PARAMS = pd.read_csv(PARAMS_FILE, index_col=0)
 
