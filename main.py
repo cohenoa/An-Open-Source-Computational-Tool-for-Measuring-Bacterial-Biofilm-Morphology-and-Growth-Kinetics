@@ -136,6 +136,11 @@ def create_images_df(input_folder, wanted_distances=None, df_centers=None):
 
 
 if __name__ == '__main__':
+
+    figures_dir = './Figures/'
+    if not os.path.exists(figures_dir):
+        os.makedirs(figures_dir)
+
     df_file = 'df_images.pickle'
     use_existing_df = False
 
