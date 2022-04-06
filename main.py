@@ -10,10 +10,10 @@ from figure6 import create_figure6
 from figures2a3a import create_illustration
 from stat_utils import figure_4_compute_pvalues, print_stats_table, print_num_repetitions
 from utils import *
-
-pd.options.display.min_rows = 10000
 import seaborn as sns
 from macros import *
+
+pd.options.display.min_rows = 10000
 
 sns.set_palette(sns.color_palette(colors))
 
