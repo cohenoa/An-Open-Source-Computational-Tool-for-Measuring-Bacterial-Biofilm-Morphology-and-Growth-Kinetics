@@ -1,4 +1,4 @@
-# Code & Data used for the paper ”Bacillus subtilis Biofilms in the Presence of Chlorhexidine – a Computational Approach to Morphology and Growth Kinetics Analysis”
+# Code to accompany the paper: ”Bacillus subtilis Biofilms in the Presence of Chlorhexidine – a Computational Approach to Morphology and Growth Kinetics Analysis”
 
 ## Data 
 The raw images are found in the the "DATASET" folder.
