@@ -23,8 +23,9 @@ def parse_image_filename(image_file):
 
     return plate, distance, day, micrometers_in_pixels
 
+
 def read_image(img_file: str):
-  assert(os.path.exists(img_file))
+  assert(os.path.exists(img_file)), img_file
   image = cv2.imread(img_file)
   image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
   image_3D = image.copy()
@@ -45,6 +46,7 @@ def get_all_contours(image, min_thresh, to_erode=True, kernel_size=5, iterations
     kernel = np.ones((kernel_size, kernel_size), np.uint8)
     image = cv2.erode(image, kernel, iterations=iterations)
 
+
   mask = cv2.inRange(image, min_thresh, 1)
   contours = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
   contours = imutils.grab_contours(contours)
@@ -59,6 +61,7 @@ def fetch_nth_contour(contours, n=1):
 
     # sort contours by area
     contour_areas = [cv2.contourArea(c) for c in contours]
+    print('num contours:', len(contour_areas))
     contour_areas_sorted = sorted(contour_areas, reverse=True)
     sorted_idx = np.argsort(contour_areas)[::-1]
 

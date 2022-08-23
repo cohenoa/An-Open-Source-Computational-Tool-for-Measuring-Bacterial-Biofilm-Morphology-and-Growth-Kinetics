@@ -6,7 +6,7 @@ from matplotlib import gridspec
 from macros import *
 
 
-def create_figure6(df_images):
+def create_figure6(df_images, output_dir):
     # convertion of distance 3 to 'Control'
     df_images['DistanceFromCHXStr'] = df_images['DistanceFromCHX'].apply(lambda x: str(x))
     df_images.loc[df_images['DistanceFromCHXStr'] == '3.0', 'DistanceFromCHXStr'] = 'Control'
@@ -49,4 +49,4 @@ def create_figure6(df_images):
     plt.setp(ax.get_legend().get_title(), fontsize=LEGEND_TITLE_FONT_SIZE)
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE)
     plt.yticks([1E7, 2E7, 3E7, 4E7, 5E7, 6E7, 7E7, 8E7, 9E7])
-    plt.savefig('./Figures/6.png')
+    plt.savefig(os.path.join(output_dir, '6.png'))

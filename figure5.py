@@ -42,7 +42,7 @@ def get_pixel_distances_vs_intensities(row):
   return distances, intensities, linear_regression.coef_
 
 
-def create_figure5(df_day3):
+def create_figure5(df_day3, output_dir):
   image_1cm_filename = 'Plate 2 CHX 1 cm day 3 GFP_RGB_GFP_22_38.tif'
   image_2cm_filename = 'Plate 10 CHX 2 cm day 3 GFP_RGB_GFP_22_38.tif'
 
@@ -96,7 +96,7 @@ def create_figure5(df_day3):
   plt.ylabel('Pixel Intensity', fontsize=AXIS_FONT_SIZE)
   plt.xlabel('Distance from CHX ($\mu m$)', fontsize=AXIS_FONT_SIZE)
   plt.tick_params(labelsize=AXIS_TICK_SIZE)
-  plt.savefig('./Figures/5.png')
+  plt.savefig(os.path.join(output_dir, '5.png'))
 
 
 def create_scatter(df_day3):

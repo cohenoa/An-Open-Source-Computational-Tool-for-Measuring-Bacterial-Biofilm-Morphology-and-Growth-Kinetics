@@ -4,7 +4,7 @@ import seaborn as sns
 from macros import *
 
 
-def create_figure2b(df_images):
+def create_figure2b(df_images, output_dir):
     fig, axes = plt.subplots(1, 2, figsize=(15, 5))
 
     ax = sns.pointplot(ax=axes[0], x="Day", y="horizontal_radii_ratio", data=df_images, hue='DistanceFromCHXStr',
@@ -29,4 +29,4 @@ def create_figure2b(df_images):
 
     plt.setp(ax.get_legend().get_title(), fontsize=LEGEND_TITLE_FONT_SIZE) # for legend title
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE) # for legend text
-    plt.savefig('./Figures/2b.png')
+    plt.savefig(os.path.join(output_dir, '2b.png'))

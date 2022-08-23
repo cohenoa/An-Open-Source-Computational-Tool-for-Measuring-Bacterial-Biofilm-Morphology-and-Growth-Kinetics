@@ -5,7 +5,7 @@ import seaborn as sns
 from macros import *
 
 
-def create_figure3b(df_images):
+def create_figure3b(df_images, output_dir):
 
     colors = ['#9ECAE1', '#4292C6', '#084594', '#969696']
     sns.set_palette(sns.color_palette(colors))
@@ -35,5 +35,5 @@ def create_figure3b(df_images):
     ax.tick_params(labelsize=AXIS_TICK_SIZE)
     plt.setp(ax.get_legend().get_title(), fontsize=LEGEND_TITLE_FONT_SIZE) # for legend title
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE) # for legend text
-    plt.savefig('./Figures/3b.png')
+    plt.savefig(os.path.join(output_dir, '3b.png'))
 

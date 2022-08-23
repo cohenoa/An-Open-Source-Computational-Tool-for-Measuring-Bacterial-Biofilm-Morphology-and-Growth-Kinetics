@@ -7,7 +7,7 @@ from macros import *
 from utils import get_ellipse_radii
 
 
-def create_illustration(df_images, figure_number):
+def create_illustration(df_images, figure_number, output_dir):
     index = 'Plate 4 CHX 1 cm day 3 GFP_RGB_GFP_22_38.tif'
     center = df_images.loc[index]['Center']
     center_x = int(center[0])
@@ -67,7 +67,7 @@ def create_illustration(df_images, figure_number):
                 image_left_with_mirror,
                 left_contour_mirrored_with_ellipse,
                 image_right_with_mirror,
-                right_contour_mirrored_with_ellipse, figure_number)
+                right_contour_mirrored_with_ellipse, figure_number, output_dir)
 
 
 def draw_half(image, center_x, original_contour, left_contour, type):
@@ -116,7 +116,7 @@ def plot_figure(image_with_background,
                 image_left_with_mirror,
                 left_contour_mirrored_with_ellipse,
                 image_right_with_mirror,
-                right_contour_mirrored_with_ellipse, figure_number):
+                right_contour_mirrored_with_ellipse, figure_number, output_dir):
     # Plotting the figure
     figure = plt.figure(constrained_layout=True, figsize=(8, 4))
     spec2 = gridspec.GridSpec(ncols=3, nrows=2, figure=figure)
@@ -141,6 +141,6 @@ def plot_figure(image_with_background,
     plt.axis('off')
 
     if figure_number == 2:
-        plt.savefig('./Figures/2a.png')
+        plt.savefig(os.path.join(output_dir, '2a.png'))
     elif figure_number == 3:
-        plt.savefig('./Figures/3a.png')
+        plt.savefig(os.path.join(output_dir, '3a.png'))

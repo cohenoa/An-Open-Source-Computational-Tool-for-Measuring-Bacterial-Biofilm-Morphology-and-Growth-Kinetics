@@ -137,9 +137,9 @@ def create_images_df(input_folder, wanted_distances=None, df_centers=None):
 
 if __name__ == '__main__':
 
-    figures_dir = './Figures/'
-    if not os.path.exists(figures_dir):
-        os.makedirs(figures_dir)
+    output_dir = './Figures2/'
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     df_file = 'df_images.pickle'
     use_existing_df = False
@@ -158,32 +158,32 @@ if __name__ == '__main__':
     print_num_repetitions(df_images)
 
     print('-----------------------', 'Figure 1', '--------------------')
-    create_figure1(df_images)
+    create_figure1(df_images, output_dir)
     print_stats_table(df_images, 'OuterContourArea', [1, 2, 3])
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
 
 
     print('-----------------------', 'Figure 2A', '--------------------')
-    create_illustration(df_images, 2)
+    create_illustration(df_images, 2, output_dir)
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
 
     print('-----------------------', 'Figure 2B', '--------------------')
-    create_figure2b(df_images)
+    create_figure2b(df_images, output_dir)
     print_stats_table(df_images, 'horizontal_radii_ratio', [3])
     print_stats_table(df_images, 'vertical_radii_ratio', [3])
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
 
     print('-----------------------', 'Figure 3A', '--------------------')
-    create_illustration(df_images, 3)
+    create_illustration(df_images, 3, output_dir)
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
 
 
     print('-----------------------', 'Figure 3B', '--------------------')
-    create_figure3b(df_images)
+    create_figure3b(df_images, output_dir)
     print_stats_table(df_images, 'inner_horizontal_radii_ratio', [3])
     print_stats_table(df_images, 'inner_vertical_radii_ratio', [3])
     plt.close('all')
@@ -211,17 +211,17 @@ if __name__ == '__main__':
 
 
     print('-----------------------', 'Figure 4', '--------------------')
-    create_figure4(df_day3)
+    create_figure4(df_day3, output_dir)
     figure_4_compute_pvalues(df_day3)
     print('-----------------------', 'DONE', '--------------------')
 
     print('-----------------------', 'Figure 5', '--------------------')
-    create_figure5(df_images_day3_before_grouping)
+    create_figure5(df_images_day3_before_grouping, output_dir)
     #create_scatter(df_images_day3_before_grouping)
     print('-----------------------', 'DONE', '--------------------')
 
     print('-----------------------', 'Figure 6', '--------------------')
     df_images_halfs = create_images_df(input_folder=INPUT_FOLDER, wanted_distances=[0.5, 3.0])  # 3.0 is control
-    create_figure6(df_images_halfs)
+    create_figure6(df_images_halfs, output_dir)
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')

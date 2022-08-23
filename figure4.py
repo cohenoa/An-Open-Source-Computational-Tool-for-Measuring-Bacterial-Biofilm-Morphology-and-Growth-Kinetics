@@ -69,7 +69,7 @@ def fill_df_intensities_use_orientation(df_images):
     print(len(df_images))
 
 
-def create_figure4(df_day3):
+def create_figure4(df_day3, output_dir):
     sns.reset_defaults()
     plt.figure(figsize=(10, 6))
     ax = sns.boxplot(x='DistanceFromCHX', y="ratio_right_to_left_intensity", hue='Region type', data=df_day3, linewidth=1.5, width=0.6) #width=0.5, linewidth = 0.7
@@ -87,7 +87,7 @@ def create_figure4(df_day3):
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE)  # for legend text
     sns.despine(offset=0, trim=False)
 
-    plt.savefig('./Figures/4.png')
+    plt.savefig(os.path.join(output_dir, '4.png'))
 
 
 
