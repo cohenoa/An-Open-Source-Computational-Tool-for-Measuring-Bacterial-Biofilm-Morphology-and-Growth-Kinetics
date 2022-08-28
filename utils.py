@@ -61,7 +61,6 @@ def fetch_nth_contour(contours, n=1):
 
     # sort contours by area
     contour_areas = [cv2.contourArea(c) for c in contours]
-    print('num contours:', len(contour_areas))
     contour_areas_sorted = sorted(contour_areas, reverse=True)
     sorted_idx = np.argsort(contour_areas)[::-1]
 
