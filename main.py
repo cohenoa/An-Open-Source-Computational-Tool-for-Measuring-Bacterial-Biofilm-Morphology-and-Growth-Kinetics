@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+import argparse
 
 from augmentation_utils import create_control_augmentations
 from figure1 import create_figure1
@@ -136,8 +137,27 @@ def create_images_df(input_folder, wanted_distances=None, df_centers=None):
 
 
 if __name__ == '__main__':
+    # print('hello')
+    # exit(1)
+    # asking for two input arguments:
+    # (a) Input folder, containing the images (e.g., tif fileS) and matching centers (csv files)
+    # (b) Outout folder for generating the images presented in the manuscript.
+    parser = argparse.ArgumentParser(description='Running biofilm image processing analysis.')
+    # parser.add_argument('-i', '--input_folder', type=argparse.FileType('r'), required=True, help='Path of input folder.')
+    parser.add_argument('-o', '--output_folder', required=True, help='Path of output folder.')
 
-    output_dir = './Figures2/'
+    args = parser.parse_args()
+    # BASE_PATH = args.input
+    # print(BASE_PATH)
+    # exit(1)
+    output_dir = args.output_folder
+    output_dir = output_dir.strip()
+    if not output_dir[-1] == '/': # TODO: check how to make this smarter
+        output_dir += '/'
+
+    # output_dir = './Figures3/'
+    print('$'+output_dir+'$')
+    # exit(1)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
