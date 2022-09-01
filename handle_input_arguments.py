@@ -22,11 +22,11 @@ def is_valid_inputdir(path_str: str):
 
     # Check that the input folder contains the required sub folders: Centers, Images
     if not os.path.exists(os.path.join(path_str, IMAGES_SUBFOLDER)):
-        print('ERROR: Input folder must contain a sub-folder named "{}". You entered: "{}"'.format(IMAGES_SUBFOLDER, input_dir))
+        print('ERROR: Input folder must contain a sub-folder named "{}". You entered: "{}"'.format(IMAGES_SUBFOLDER, path_str))
         return False
 
     if not os.path.exists(os.path.join(path_str, CENTERS_SUBFOLDER)):
-        print('ERROR: Input folder must contain a sub-folder named "{}". You entered: "{}"'.format(CENTERS_SUBFOLDER, input_dir))
+        print('ERROR: Input folder must contain a sub-folder named "{}". You entered: "{}"'.format(CENTERS_SUBFOLDER, path_str))
         return False
 
     return True
