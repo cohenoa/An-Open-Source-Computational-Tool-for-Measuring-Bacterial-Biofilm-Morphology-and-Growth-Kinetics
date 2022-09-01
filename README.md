@@ -30,10 +30,10 @@ For example, if the input folder is “C:\UserInput\” and the output folder is
 `python main.py -i C:\UserInput\ -o C:\Output\`
 
 ### 2.3 Working example
-![img_15.png](img_15.png)
+![img_15.png](img_README_cmd_example.png)
 
 The output folder will contain the resulting figures, numbered according to their references in the paper:
-![img_7.png](img_7.png)
+![img_7.png](img_README_output_example.png)
 
 
 ## Data 
