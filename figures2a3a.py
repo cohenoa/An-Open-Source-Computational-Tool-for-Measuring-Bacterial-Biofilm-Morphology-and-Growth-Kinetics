@@ -7,11 +7,11 @@ from macros import *
 from utils import get_ellipse_radii
 
 
-def create_illustration(df_images, figure_number, output_dir):
+def create_illustration(df_images, figure_number, output_dir, input_folder):
     index = 'Plate 4 CHX 1 cm day 3 GFP_RGB_GFP_22_38.tif'
     center = df_images.loc[index]['Center']
     center_x = int(center[0])
-    img_file = os.path.join(INPUT_FOLDER, 'Day3/{}'.format(index))
+    img_file = os.path.join(input_folder, 'Day3/{}'.format(index))
     assert (os.path.exists(img_file))
     image = df_images.loc[index]['RawImage3D']
     distance_from_CHX_map = df_images.loc[index]['distance_from_CHX_map']

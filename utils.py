@@ -4,10 +4,7 @@ import re
 
 import cv2
 import imutils
-import numpy as np
 import pandas as pd
-
-from macros import DF_PARAMS
 
 
 def parse_image_filename(image_file):
@@ -96,16 +93,16 @@ def compute_distance_gradient_image(image, distance, center, micrometers_in_pixe
 
 
 def get_ellipse_stats(contour):
-  (xc,yc), (d1,d2), angle = cv2.fitEllipse(contour)
-  a = max(d1,d2) / 2  # Major radius
-  b = min(d1,d2) / 2  # Minor radius
+  (xc, yc), (d1, d2), angle = cv2.fitEllipse(contour)
+  a = max(d1, d2) / 2  # Major radius
+  b = min(d1, d2) / 2  # Minor radius
   area = math.pi * a * b
-  perimeter = math.pi * ( 3*(a+b) - math.sqrt( (3*a + b) * (a + 3*b) ) )
+  perimeter = math.pi * (3*(a+b) - math.sqrt( (3*a + b) * (a + 3*b)))
   return a, b, area, perimeter
 
 
-def get_params(image_file_name):
-  if not image_file_name in DF_PARAMS.index: # for 0.5 cm
+def get_params(image_file_name, DF_PARAMS):
+  if not image_file_name in DF_PARAMS.index:  # for 0.5 cm
     return 0.3, 0.3, 1, 0
   # assert(image_file_name in DF_PARAMS.index), '{} is missing from DF_PARAMS'.format(image_file_name)
   row = DF_PARAMS.loc[image_file_name]

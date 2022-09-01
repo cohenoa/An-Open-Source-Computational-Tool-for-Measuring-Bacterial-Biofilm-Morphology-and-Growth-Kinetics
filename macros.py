@@ -2,11 +2,14 @@ import os
 
 import pandas as pd
 
-BASE_PATH = 'Dataset/'
-INPUT_FOLDER = os.path.join(BASE_PATH, 'Images/')
-INPUT_FOLDER_CENTERS = os.path.join(BASE_PATH, 'Centers/')
-PARAMS_FILE = os.path.join(BASE_PATH, 'thresh_params.csv')
-DF_PARAMS = pd.read_csv(PARAMS_FILE, index_col=0)
+CENTERS_SUBFOLDER = 'Centers'
+IMAGES_SUBFOLDER = 'Images'
+
+# BASE_PATH = 'Dataset/'
+# INPUT_FOLDER = os.path.join(BASE_PATH, 'Images/')
+# INPUT_FOLDER_CENTERS = os.path.join(BASE_PATH, 'Centers/')
+# PARAMS_FILE = os.path.join(BASE_PATH, 'thresh_params.csv')
+# DF_PARAMS = pd.read_csv(PARAMS_FILE, index_col=0)
 
 
 AXIS_FONT_SIZE = 16

@@ -1,3 +1,7 @@
+import os.path
+
+import sys
+
 from matplotlib import pyplot as plt
 import argparse
 
@@ -9,6 +13,7 @@ from figure4 import create_figure4, fill_df_intensities_use_orientation
 from figure5 import create_figure5
 from figure6 import create_figure6
 from figures2a3a import create_illustration
+from handle_input_arguments import handle_input_arguments, organize_paths
 from stat_utils import figure_4_compute_pvalues, print_stats_table, print_num_repetitions
 from utils import *
 import seaborn as sns
@@ -19,7 +24,7 @@ pd.options.display.min_rows = 10000
 sns.set_palette(sns.color_palette(colors))
 
 
-def create_images_df(input_folder, wanted_distances=None, df_centers=None):
+def create_images_df(input_folder, df_params, wanted_distances=None, df_centers=None):
     # Iterate over the images in the folder
     list_dict = []
     for day in [1, 2, 3]:
@@ -42,7 +47,7 @@ def create_images_df(input_folder, wanted_distances=None, df_centers=None):
             image_normalized, image_raw, image_uint, image_3D = read_image(image_file_path)
 
             # Compute outer contour
-            min_thresh_outer, min_thresh_inner, erode_kernel_size, erode_iterations = get_params(image_file_name)
+            min_thresh_outer, min_thresh_inner, erode_kernel_size, erode_iterations = get_params(image_file_name, df_params)
 
             contours_outer = get_all_contours(image_normalized, min_thresh_outer)
             outer_contour_obj, outer_contour_area, outer_contour_perimeter = \
@@ -137,29 +142,8 @@ def create_images_df(input_folder, wanted_distances=None, df_centers=None):
 
 
 if __name__ == '__main__':
-    # print('hello')
-    # exit(1)
-    # asking for two input arguments:
-    # (a) Input folder, containing the images (e.g., tif fileS) and matching centers (csv files)
-    # (b) Outout folder for generating the images presented in the manuscript.
-    parser = argparse.ArgumentParser(description='Running biofilm image processing analysis.')
-    # parser.add_argument('-i', '--input_folder', type=argparse.FileType('r'), required=True, help='Path of input folder.')
-    parser.add_argument('-o', '--output_folder', required=True, help='Path of output folder.')
-
-    args = parser.parse_args()
-    # BASE_PATH = args.input
-    # print(BASE_PATH)
-    # exit(1)
-    output_dir = args.output_folder
-    output_dir = output_dir.strip()
-    if not output_dir[-1] == '/': # TODO: check how to make this smarter
-        output_dir += '/'
-
-    # output_dir = './Figures3/'
-    print('$'+output_dir+'$')
-    # exit(1)
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    input_dir, output_dir = handle_input_arguments(sys.argv[1:])
+    input_folder, input_folder_centers, df_params = organize_paths(input_dir)
 
     df_file = 'df_images.pickle'
     use_existing_df = False
@@ -167,9 +151,9 @@ if __name__ == '__main__':
     if use_existing_df:
         df_images = pd.read_pickle(df_file)
     else:
-        df_centers = create_centers_df(input_folder=INPUT_FOLDER_CENTERS)
-        df_images = create_images_df(input_folder=INPUT_FOLDER, wanted_distances=[1.0, 1.5, 2.0, 3.0],
-                                     df_centers=df_centers)
+        df_centers = create_centers_df(input_folder=input_folder_centers)
+        df_images = create_images_df(input_folder=input_folder, wanted_distances=[1.0, 1.5, 2.0, 3.0],
+                                     df_centers=df_centers, df_params=df_params)
         print('Finished creating df_images, joined with df_centers.')
         fill_df(df_images)
         df_images.to_pickle(df_file)
@@ -185,7 +169,7 @@ if __name__ == '__main__':
 
 
     print('-----------------------', 'Figure 2A', '--------------------')
-    create_illustration(df_images, 2, output_dir)
+    create_illustration(df_images, 2, output_dir, input_folder)
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
 
@@ -197,7 +181,7 @@ if __name__ == '__main__':
     print('-----------------------', 'DONE', '--------------------')
 
     print('-----------------------', 'Figure 3A', '--------------------')
-    create_illustration(df_images, 3, output_dir)
+    create_illustration(df_images, 3, output_dir, input_folder)
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
 
@@ -241,7 +225,7 @@ if __name__ == '__main__':
     print('-----------------------', 'DONE', '--------------------')
 
     print('-----------------------', 'Figure 6', '--------------------')
-    df_images_halfs = create_images_df(input_folder=INPUT_FOLDER, wanted_distances=[0.5, 3.0])  # 3.0 is control
+    df_images_halfs = create_images_df(input_folder=input_folder, wanted_distances=[0.5, 3.0], df_params=df_params)  # 3.0 is control
     create_figure6(df_images_halfs, output_dir)
     plt.close('all')
     print('-----------------------', 'DONE', '--------------------')
