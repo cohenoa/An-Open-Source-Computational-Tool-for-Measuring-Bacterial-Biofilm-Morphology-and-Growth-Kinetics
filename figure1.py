@@ -37,7 +37,7 @@ def create_figure1(df_images, output_dir):
         image = cv2.drawContours(image, [outer_contour_obj], -1, 1, 6)
         plt.imshow(image)
         plt.axis('off')
-    plt.savefig(os.path.join(output_dir, '1a.png'))
+    plt.savefig(os.path.join(output_dir, 'Figure_1a.png'))
 
     plt.figure(figsize=(7, 5))
     ax = sns.pointplot(x="Day", y="OuterContourArea", data=df_images, hue='DistanceFromCHXStr',
@@ -51,4 +51,4 @@ def create_figure1(df_images, output_dir):
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE)  # for legend text
     plt.yticks([1E7, 2E7, 3E7, 4E7, 5E7, 6E7, 7E7, 8E7, 9E7])  # added to match Figure 6
 
-    plt.savefig(os.path.join(output_dir, '1b.png'))
+    plt.savefig(os.path.join(output_dir, 'Figure_1b.png'))

@@ -29,4 +29,4 @@ def create_figure2b(df_images, output_dir):
 
     plt.setp(ax.get_legend().get_title(), fontsize=LEGEND_TITLE_FONT_SIZE) # for legend title
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE) # for legend text
-    plt.savefig(os.path.join(output_dir, '2b.png'))
+    plt.savefig(os.path.join(output_dir, 'Figure_2b.png'))

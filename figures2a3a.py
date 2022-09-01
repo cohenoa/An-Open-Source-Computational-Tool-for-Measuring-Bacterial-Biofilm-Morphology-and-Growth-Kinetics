@@ -141,6 +141,6 @@ def plot_figure(image_with_background,
     plt.axis('off')
 
     if figure_number == 2:
-        plt.savefig(os.path.join(output_dir, '2a.png'))
+        plt.savefig(os.path.join(output_dir, 'Figure_2a.png'))
     elif figure_number == 3:
-        plt.savefig(os.path.join(output_dir, '3a.png'))
+        plt.savefig(os.path.join(output_dir, 'Figure_3a.png'))

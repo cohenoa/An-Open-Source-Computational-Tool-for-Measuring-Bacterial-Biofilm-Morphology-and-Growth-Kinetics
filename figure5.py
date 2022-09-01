@@ -96,7 +96,7 @@ def create_figure5(df_day3, output_dir):
   plt.ylabel('Pixel Intensity', fontsize=AXIS_FONT_SIZE)
   plt.xlabel('Distance from CHX ($\mu m$)', fontsize=AXIS_FONT_SIZE)
   plt.tick_params(labelsize=AXIS_TICK_SIZE)
-  plt.savefig(os.path.join(output_dir, '5.png'))
+  plt.savefig(os.path.join(output_dir, 'Figure_5.png'))
 
 
 def create_scatter(df_day3):

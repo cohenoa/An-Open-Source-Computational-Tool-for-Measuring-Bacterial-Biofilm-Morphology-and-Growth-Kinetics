@@ -87,7 +87,7 @@ def create_figure4(df_day3, output_dir):
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE)  # for legend text
     sns.despine(offset=0, trim=False)
 
-    plt.savefig(os.path.join(output_dir, '4.png'))
+    plt.savefig(os.path.join(output_dir, 'Figure_4.png'))
 
 
 

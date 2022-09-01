@@ -49,4 +49,4 @@ def create_figure6(df_images, output_dir):
     plt.setp(ax.get_legend().get_title(), fontsize=LEGEND_TITLE_FONT_SIZE)
     plt.setp(ax.get_legend().get_texts(), fontsize=LEGEND_TEXT_FONT_SIZE)
     plt.yticks([1E7, 2E7, 3E7, 4E7, 5E7, 6E7, 7E7, 8E7, 9E7])
-    plt.savefig(os.path.join(output_dir, '6.png'))
+    plt.savefig(os.path.join(output_dir, 'Figure_6.png'))
