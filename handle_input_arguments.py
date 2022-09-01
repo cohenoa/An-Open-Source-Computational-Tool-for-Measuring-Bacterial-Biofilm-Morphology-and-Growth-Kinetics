@@ -22,11 +22,13 @@ def is_valid_inputdir(path_str: str):
 
     # Check that the input folder contains the required sub folders: Centers, Images
     if not os.path.exists(os.path.join(path_str, IMAGES_SUBFOLDER)):
-        print('ERROR: Input folder must contain a sub-folder named "{}". You entered: "{}"'.format(IMAGES_SUBFOLDER, path_str))
+        print('ERROR: Input folder must contain a sub-folder named "{}".'
+              ' You entered: "{}"'.format(IMAGES_SUBFOLDER, path_str))
         return False
 
     if not os.path.exists(os.path.join(path_str, CENTERS_SUBFOLDER)):
-        print('ERROR: Input folder must contain a sub-folder named "{}". You entered: "{}"'.format(CENTERS_SUBFOLDER, path_str))
+        print('ERROR: Input folder must contain a sub-folder named "{}". '
+              'You entered: "{}"'.format(CENTERS_SUBFOLDER, path_str))
         return False
 
     return True
@@ -39,8 +41,7 @@ def handle_input_arguments(args):
     parser = argparse.ArgumentParser(description='Running biofilm image processing analysis.')
     parser.add_argument('-i', '--input_folder', required=True, help='Path of input folder.')
 
-    parser.add_argument('-o', '--output_folder',  required=True, help='Path of output folder.')#, default='./Dataset')
-
+    parser.add_argument('-o', '--output_folder',  required=True, help='Path of output folder.')
     results = parser.parse_args(args)
     input_dir = results.input_folder
     output_dir = results.output_folder
