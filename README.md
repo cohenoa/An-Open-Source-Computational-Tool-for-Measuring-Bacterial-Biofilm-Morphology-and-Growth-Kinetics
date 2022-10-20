@@ -1,5 +1,8 @@
 # Code to accompany the paper: ”An Open-Source Computational Tool for Measuring Bacterial Biofilm Morphology and Growth Kinetics upon One-Sided Exposure to an Anti-Microbial Source” #
 
+Link to the paper: https://www.nature.com/articles/s41598-022-20275-8
+
+
 ## 1. Installation ##
 Our program is compatible with Python 3 on Windows/Linux.
 1. Install Python 3: https://www.python.org/download/releases/3.0/ 
