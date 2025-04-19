@@ -37,7 +37,7 @@ def is_valid_inputdir(path_str: str):
 def handle_input_arguments(args):
     # asking for two input arguments:
     # (a) Input folder, containing the images (e.g., tif fileS) and matching centers (csv files)
-    # (b) Output folder for generating the images presented in the manuscript.
+    # (b) Output_all_samples_hapne_ld folder for generating the images presented in the manuscript.
     parser = argparse.ArgumentParser(description='Running biofilm image processing analysis.')
     parser.add_argument('-i', '--input_folder', required=True, help='Path of input folder.')
 
